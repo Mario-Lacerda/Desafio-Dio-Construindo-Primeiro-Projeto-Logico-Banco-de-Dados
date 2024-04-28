@@ -56,22 +56,16 @@ Algumas perguntas que foram propostas:
 
 sql
 
-![Done](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/b3baca6de20012788f7d.svg)![Copy](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/7120b68615ebe4b28075.svg)
-
-```sql
 SELECT cliente_id, COUNT(*) AS num_pedidos
 FROM pedido
 GROUP BY cliente_id
 ORDER BY num_pedidos DESC;
-```
 
+```
 **2. Vendedores que também são fornecedores**
 
 sql
 
-![Done](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/b3baca6de20012788f7d.svg)![Copy](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/7120b68615ebe4b28075.svg)
-
-```sql
 SELECT DISTINCT nome
 FROM vendedor
 INTERSECT
@@ -83,9 +77,6 @@ FROM fornecedor;
 
 sql
 
-![Done](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/b3baca6de20012788f7d.svg)![Copy](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/7120b68615ebe4b28075.svg)
-
-```sql
 SELECT produto.nome AS nome_produto,
        fornecedor.nome AS nome_fornecedor,
        estoque.quantidade
@@ -93,15 +84,12 @@ FROM produto
 JOIN fornecimento ON produto.id = fornecimento.produto_id
 JOIN fornecedor ON fornecimento.fornecedor_id = fornecedor.id
 JOIN estoque ON produto.id = estoque.produto_id;
-```
 
+```
 **4. Nomes de fornecedores e produtos**
 
 sql
 
-![Done](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/b3baca6de20012788f7d.svg)![Copy](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/7120b68615ebe4b28075.svg)
-
-```sql
 SELECT fornecedor.nome AS nome_fornecedor,
        produto.nome AS nome_produto
 FROM fornecedor
@@ -129,22 +117,16 @@ Além das consultas SQL básicas fornecidas no desafio, aqui estão algumas cons
 
 sql
 
-![Done](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/b3baca6de20012788f7d.svg)![Copy](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/7120b68615ebe4b28075.svg)
-
-```sql
 SELECT cliente.nome
 FROM cliente
 JOIN pedido ON cliente.id = pedido.cliente_id
 WHERE pedido.valor_total > 100;
-```
 
+```
 **2. Produtos mais vendidos por categoria**
 
 sql
 
-![Done](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/b3baca6de20012788f7d.svg)![Copy](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/7120b68615ebe4b28075.svg)
-
-```sql
 SELECT categoria.nome AS categoria_produto,
        produto.nome AS nome_produto,
        SUM(item_pedido.quantidade) AS quantidade_vendida
@@ -159,9 +141,6 @@ ORDER BY quantidade_vendida DESC;
 
 sql
 
-![Done](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/b3baca6de20012788f7d.svg)![Copy](chrome-extension://igpdmclhhlcpoindmhkhillbfhdgoegm/7120b68615ebe4b28075.svg)
-
-```sql
 SELECT vendedor.nome AS nome_vendedor,
        strftime('%Y-%m', pedido.data_pedido) AS mes_pedido,
        SUM(item_pedido.quantidade * item_pedido.valor_unitario) AS vendas_totais
@@ -170,7 +149,8 @@ JOIN pedido ON vendedor.id = pedido.vendedor_id
 JOIN item_pedido ON pedido.id = item_pedido.pedido_id
 GROUP BY nome_vendedor, mes_pedido
 ORDER BY nome_vendedor, mes_pedido;
-```
+
+
 
 **O QUE ESTE DESAFIO PROPORCIONOU:****** **
 
@@ -204,7 +184,3 @@ ORDER BY nome_vendedor, mes_pedido;
 **Conclusão:**
 
 Este desafio forneceu uma base sólida para o desenvolvimento de habilidades avançadas de modelagem de banco de dados e análise de dados. Ao replicar a modelagem lógica, aplicar refinamentos conceituais e criar consultas SQL complexas, os alunos aprimoraram sua capacidade de projetar, implementar e analisar bancos de dados para cenários do mundo real.
-
-
-
-​        
